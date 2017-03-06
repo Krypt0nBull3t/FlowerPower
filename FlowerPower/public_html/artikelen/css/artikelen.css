@@ -1,0 +1,39 @@
+.errorSpan { 
+    display: none;
+    color: red;
+	text-align: left;
+}
+ 
+.overzicht_name
+ {
+  font-size:	15px;
+  float:	left;
+  margin-left: 	10px;
+  margin-top: 	8px;
+  font-weight:	bold;
+ }
+
+ .redrow{
+ background-color: red !important;
+ border: 1px solid #AAAAAA !important;
+}
+
+.orangerow{
+ background-color: #FFA600 !important;
+ border: 1px solid #AAAAAA !important;
+}
+
+.whiterow{
+ background-color: #ffffff !important;
+ border: 1px solid #AAAAAA !important;
+}
+
+.greyrow{
+ background-color: #cacaca !important;
+ border: 1px solid #AAAAAA !important;
+}
+
+.ui-jqgrid .ui-subgrid table {margin: 12px !important; }
+ table {border-collapse: collapse !important; }
+
+.ui-widget-content .ui-subtblcell td { padding-left: 2px !important;padding-right: 2px !important; overflow: hidden !important; white-space: pre;}
