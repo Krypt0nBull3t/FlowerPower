@@ -3,7 +3,7 @@
 session_start();
 require_once 'databaseconn.php';
 $database = new connDatabase();
-
+$message = "";
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $user_password = $_POST['password'];
@@ -15,12 +15,12 @@ if (isset($_POST['submit'])) {
         $stmt = $database->selectuser('*', 'medewerker', $username ,$password);
 
         if ($stmt['wachtwoord'] == $password) {
-
-            echo "ok"; // log in
-            $_SESSION['user_session'] = $stmt['medewerkerscode'];
+            $message="".$stmt['voorletters']." ".$stmt['achternaam']." is ingelogd.";
+            echo "<script type='text/javascript'>alert('$message');</script>"; // log in
+            $_SESSION['user_session'] = $username;
         } else {
-
-            echo "gebruikersnaam of wachtwoord bestaat niet."; // wrong details 
+            $message="gebruikersnaam of wachtwoord bestaat niet.";
+            echo "<script type='text/javascript'>alert('$message');</script>"; // wrong details 
         }
     } catch (PDOException $e) {
         echo $e->getMessage();

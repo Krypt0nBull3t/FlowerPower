@@ -23,11 +23,14 @@
         <link rel="stylesheet" href="css/simple-sidebar.css">
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script src="login/loginscript.js" type="text/javascript"></script>
+        <?php require_once "login/login.php"; ?>
     </head>
     <body>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+        <div class="container"></div>
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
@@ -40,31 +43,45 @@
                     <a class="navbar-brand" href="#">Flowerpower</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
-                    <form class="navbar-form navbar-right" role="form">
+
+                <?php  if (isset($_SESSION['user_session'])) {
+                        print' <form name="form_logout" id="form_logout" method="post" class="navbar-form navbar-right" role="form">
+                        <div class="form-group">';
+                        print"    <p>" . $_SESSION['user_session'] . "</p>";
+                        print '</div>
+                        <a class="btn btn-primary btn-lg" href="login/logout.php" role="button">Uitloggen</a>
+                    </form>';
+
+                } else {
+                   print' <form name="form_login" id="form_login" method="post" class="navbar-form navbar-right" role="form">
                         <div class="form-group">
-                            <input type="text" placeholder="Email" class="form-control">
+                            <input name="username" type="text" id="username" placeholder="Gebruikersnaam" class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="password" placeholder="Password" class="form-control">
+                            <input name="password" type="password" id="password" placeholder="Wachtwoord" class="form-control">
                         </div>
-                        <button type="submit" class="btn btn-success">Sign in</button>
-                    </form>
+                        <button name="submit" type="submit" id="submit" class="btn btn-success">Inloggen</button>
+                    </form>';
+                }
+                    ?>
                     <ul class="nav navbar-nav hidden-sm hidden-md hidden-lg">
                         <li><a href="index.php">Home</a></li>
                         <li><a href="contact.php">Contact</a></li>
                         <li><a href="shop.php">Shop</a></li>
                         <li class="active"><a href="profiel.php">Profiel</a></li>
+                        <?php  if (isset($_SESSION['user_session'])) { print' <li><a href="artikelen.php">Artikelen</a></li>';}?>
                     </ul>
                 </div><!--/.navbar-collapse -->
             </div>
         </nav>
-
+ <div id="wrapper">
         <div id="sidebar-wrapper" role="navigation">
             <ul class="sidebar-nav">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="contact.php">Contact</a></li>
                 <li><a href="shop.php">Shop</a></li>
                 <li><a href="profiel.php">Profiel</a></li>
+                <?php  if (isset($_SESSION['user_session'])) { print' <li><a href="artikelen.php">Artikelen</a></li>';}?>
             </ul>
         </div>    
 
@@ -102,7 +119,9 @@
             <footer>
                 <p>&copy; Fast Development 2017</p>
             </footer>
-        </div> <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        </div> <!-- /container -->  
+        </div>
+              <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
         <script src="js/vendor/bootstrap.min.js"></script>

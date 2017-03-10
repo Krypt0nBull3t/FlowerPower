@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Contactpagina</title>
+        <title>FlowerPower</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -23,11 +23,14 @@
         <link rel="stylesheet" href="css/simple-sidebar.css">
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script src="login/loginscript.js" type="text/javascript"></script>
+        <?php require_once "login/login.php"; ?>
     </head>
     <body>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+        <div class="container"></div>
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
@@ -40,69 +43,101 @@
                     <a class="navbar-brand" href="#">Flowerpower</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
-                    <form class="navbar-form navbar-right" role="form">
+
+                <?php  if (isset($_SESSION['user_session'])) {
+                        print' <form name="form_logout" id="form_logout" method="post" class="navbar-form navbar-right" role="form">
+                        <div class="form-group">';
+                        print"    <p>" . $_SESSION['user_session'] . "</p>";
+                        print '</div>
+                        <a class="btn btn-primary btn-lg" href="login/logout.php" role="button">Uitloggen</a>
+                    </form>';
+
+                } else {
+                   print' <form name="form_login" id="form_login" method="post" class="navbar-form navbar-right" role="form">
                         <div class="form-group">
-                            <input type="text" placeholder="Email" class="form-control">
+                            <input name="username" type="text" id="username" placeholder="Gebruikersnaam" class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="password" placeholder="Password" class="form-control">
+                            <input name="password" type="password" id="password" placeholder="Wachtwoord" class="form-control">
                         </div>
-                        <button type="submit" class="btn btn-success">Sign in</button>
-                    </form>
+                        <button name="submit" type="submit" id="submit" class="btn btn-success">Inloggen</button>
+                    </form>';
+                }
+                    ?>
                     <ul class="nav navbar-nav hidden-sm hidden-md hidden-lg">
                         <li><a href="index.php">Home</a></li>
                         <li class="active"><a href="contact.php">Contact</a></li>
                         <li><a href="shop.php">Shop</a></li>
                         <li><a href="profiel.php">Profiel</a></li>
+                        <?php  if (isset($_SESSION['user_session'])) { print' <li><a href="artikelen.php">Artikelen</a></li>';}?>
                     </ul>
                 </div><!--/.navbar-collapse -->
             </div>
         </nav>
-
+ <div id="wrapper">
         <div id="sidebar-wrapper" role="navigation">
             <ul class="sidebar-nav">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="contact.php">Contact</a></li>
                 <li><a href="shop.php">Shop</a></li>
                 <li><a href="profiel.php">Profiel</a></li>
+                <?php  if (isset($_SESSION['user_session'])) { print' <li><a href="artikelen.php">Artikelen</a></li>';}?>
             </ul>
         </div>    
 
-        <!-- Main jumbotron for a primary marketing message or call to action -->
-        <div class="jumbotron">
-            <div class="container">
-                <h1>Hello, Mark!</h1>
-                <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-                <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Drachten</h2>
+                    <img src = "img/Bloemenwinkel1mini.jpg" class = "inbl"/>
+                    <p>Email:           <a>drachten@flowerpower.nl</a></p>
+                    <p>Telefoonnummer:  0512-851848</p>
+                    <p>Adres:           Fietsbel 1 9205AZ Drachten</p>
+                </div>
+            
+        
+
+        
+                <div class="col-md-6">
+                    <h2>Leeuwarden</h2>
+                    <img src = "img/Bloemenwinkel1mini.jpg" class = "inbl"/>
+                    <p>Email:           <a> leeuwarden@flowerpower.nl</a></p>
+                    <p>Telefoonnummer:  0512-851848</p>
+                    <p>Adres:           Fietsbel 1 9205AZ Leeuwarden</p>
+                </div>
             </div>
         </div>
 
         <div class="container">
-            <!-- Example row of columns -->
-            <div class="row">
-                <div class="col-md-4">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+              <div class="row">
+                <div class="col-md-6">
+                    <h2>Heerenveen</h2>
+                    <img src = "img/Bloemenwinkel1mini.jpg" class = "inbl"/>
+                    <p>Email:           <a>heerenveen@flowerpower.nl</a></p>
+                    <p>Telefoonnummer:  0512-851848</p>
+                    <p>Adres:           Fietsbel 1 9205AZ Heerenveen</p>
                 </div>
-                <div class="col-md-4">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                </div>
-                <div class="col-md-4">
-                    <h2>Heading</h2>
-                    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            
+        
+                <div class="col-md-6">
+                    <h2>Sneek</h2>
+                    <img src = "img/Bloemenwinkel1mini.jpg" class = "inbl"/>    
+                    <p>Email:           <a>sneek@flowerpower.nl</a></p>
+                    <p>Telefoonnummer:  0512-851848</p>
+                    <p>Adres:           Fietsbel 1 9205AZ Sneek</p>
                 </div>
             </div>
+                
+            
 
             <hr>
 
             <footer>
                 <p>&copy; Fast Development 2017</p>
             </footer>
-        </div> <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        </div> <!-- /container -->        
+        </div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
         <script src="js/vendor/bootstrap.min.js"></script>
